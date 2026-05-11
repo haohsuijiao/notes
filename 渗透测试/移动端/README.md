@@ -547,5 +547,63 @@ const v0, 0x1
 
 所以只需要修改掉A就OK
 
+## 1，去广告示例
 
+> 去除更新弹窗
+
+![image-20260511103428936](assets/image-20260511103428936.png)
+
+![image-20260511104030597](assets/image-20260511104030597.png)
+
+查找结果中的id，这里定位到两处。
+
+![image-20260511104229787](assets/image-20260511104229787.png)
+
+分析代码121~173行，返回值类型为void，不需要返回东西，所以我们直接删除它的执行代码不让它执行里面的逻辑。
+
+```java
+.method private static a(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 3
+
+    .prologue
+### put操作
+	...
+    ...
+    return-void
+.end method
+```
+
+但是改完了并没有起到什么效果，接下来通过修改字符串进行调试：
+
+![image-20260511222504077](assets/image-20260511222504077.png)
+
+经验证，此处的v1是升级弹窗的标题，并且需要同时注释掉第478行和500行的代码
+
+```bash
+## if-eqz v1, :cond_0
+```
+
+然后之前的更新提示弹窗确实消失了，但是又开始显示了如下代码块的内容，我们还像之前一样删除即可；（这里教程同上面一样在字符串变量后面通过修改参数值进行了调试然后发现的）
+
+```bash
+.method private static a(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 3
+
+    .prologue
+### put操作
+	...
+    ...
+    return-void
+.end method
+```
+
+## 2，去除登录功能
+
+> 通过隐藏布局实现
+
+布局文件：`res/layout/`	借助工具platform-tools中的uiautomatorviewer（需使用jdk8，高版本无法启动）
+
+![image-20260511225259850](assets/image-20260511225259850.png)
+
+# 五、
 
