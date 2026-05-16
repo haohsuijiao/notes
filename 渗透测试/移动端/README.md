@@ -605,5 +605,15 @@ const v0, 0x1
 
 ![image-20260511225259850](assets/image-20260511225259850.png)
 
+找到登录窗口的控件位置
+
+![image-20260514142214976](assets/image-20260514142214976.png)
+
+可以看到下面的布局id：`function_navigation_login_layout`
+
+在res布局文件中搜索这个ID，课件里给的搜索不到（什么垃圾玩意）
+
+找到布局代码，将android:layout_width和height改成0.0dip。通过设置控件的宽高达到隐藏效果
+
 # 五、
 
