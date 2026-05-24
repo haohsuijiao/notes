@@ -31,31 +31,9 @@ tar -zxvf docker-28.5.2.tgz
 cp docker/* /usr/bin/
 ```
 
-启动docker守护进程
-
-```bash
-dockerd &
-```
-
-验证是否安装成功
-
-```bash
-systemctl status docker
-```
-
-打印如下内容表示Docker安装正确。
-
-![image-20260513182708555](assets/image-20260513182708555.png)
-
 ## 2，配置为系统服务
 
 ```bash
-# 找到dockerd的进程ID
-ps aux | grep dockerd | grep -v grep
-
-# 使用kill命令停止该进程
-sudo kill 3113
-
 # 创建服务单元文件
 vim /etc/systemd/system/docker.service
 ```
@@ -169,9 +147,9 @@ docker info
 ...
 ```
 
+执行docker run hello-world验证是否能正常运行
 
-
-
+![image-20260513182708555](assets/image-20260513182708555.png)
 
 
 
