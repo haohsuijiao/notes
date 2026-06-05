@@ -86,8 +86,8 @@ ListenStream=/var/run/docker.sock
 SocketMode=0660
 SocketUser=root
 # 这里可以遵循官方标准配置
-# 即SocketGroup=docker
-SocketGroup=root
+SocketGroup=docker
+# SocketGroup=root
 
 [Install]
 WantedBy=sockets.target
