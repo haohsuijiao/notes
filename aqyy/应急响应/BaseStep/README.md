@@ -93,7 +93,7 @@ verge-mihomo.exe                     "\\?\D:\Program Files\Systools\Clash Verge\
 
 ![image-20260730232650364](assets/image-20260730232650364.png)
 
-3）Windows账号信息，如隐藏账号灯
+3）Windows账号信息，如隐藏账号等...
 
 ```bash
 开始 - 运行 - compmgmt.msc - 本地用户和组 - 用户 
@@ -127,6 +127,34 @@ Guest                    WDAGUtilityAccount
 ```bash
 net user 【username】
 ```
+
+------
+
+查找隐藏用户
+
+(1)方式一：终端命令行
+
+```bahs
+wmic useraccount get name,SID
+```
+
+(2)方式二：注册表
+
+打开注册表编辑器：win + R ，执行regedit
+
+定位到 SAM 项，在左侧导航到 `HKEY_LOCAL_MACHINE\SAM\SAM`
+
+获取权限：右键点击 SAM 项，选择“权限”，为当前管理员用户（如Administrator），勾选 完全控制，确定后关闭并重新打开注册表编辑器。
+
+查看隐藏用户：重新导航到 `HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Account\Users\Names` 。这个列表里显示的就是系统中所有用户，包括隐藏账户。
+
+(3)计算机管理界面
+
+右键点击此电脑，选择“管理”；
+
+在左侧导航到“本地用户和组” -> “用户”。
+
+查找可疑账户：在右侧列表中查找所有账户，特别是带有 $ 结尾的（如 admin$）
 
 4）查看当前用户的会话
 
